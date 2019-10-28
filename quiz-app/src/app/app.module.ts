@@ -10,6 +10,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { ResultComponent } from './result/result.component';
 import { appRoutes } from './routes';
+import { QuestionService } from './question.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,10 +25,11 @@ import { appRoutes } from './routes';
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
-  providers: [],
+  providers: [QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
