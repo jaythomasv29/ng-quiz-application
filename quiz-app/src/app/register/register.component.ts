@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService} from "../question.service"
 import { NgModule } from '@angular/core';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,6 +15,8 @@ difficulty: any //works with [(ngModel on html select tag)]
 firstName: string
 lastName: string
 email: string
+questions: any;
+
   constructor(private _questionService:QuestionService) { 
     
   }
@@ -28,7 +31,9 @@ email: string
         console.log(this.email)
         console.log(this.difficulty)
         console.log(response)
+
       })
+
     }
       
 }
