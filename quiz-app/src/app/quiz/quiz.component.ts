@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { FormGroup, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms'
 
-
+import shuffle from 'shuffle-array'
 
 @Component({
   selector: 'app-quiz',
@@ -10,20 +11,26 @@ import { Router } from '@angular/router'
 })
 export class QuizComponent implements OnInit {
   //Quiz Component Properties
+  quizForm: FormGroup;
 
   seconds;
-  questionProgress: number; //number of questions answered
+  questionProgress: number = 0; //number of questions answered
   timer;
+  questions = []
+  correctAnswer = []
+  answerOption = []
+  allOptions: string[];
+  allOptionAnswers = []
+  userAnswerArr = []
+  userAnswer = ""
+  score
+  
+  
 
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private fb: FormBuilder) {
     let user = this.router.getCurrentNavigation().extras.state
-    console.log('STATE Object:', user)
-    let questions = []
-    let correctAnswer = []
-    let answerOption = []
-    let allOptions: string[];
-    let allOptionAnswers = []
+    // console.log('STATE Object:', user)
 
     //get user questions into an array
     for (let i = 0; i < user.response.results.length; i++) {
@@ -31,16 +38,18 @@ export class QuizComponent implements OnInit {
       let eachCorrectAnswer = user.response.results[i].correct_answer
       let eachAnswerSelection = user.response.results[i].incorrect_answers
 
-      questions.push(eachQuestion)
-      correctAnswer.push(eachCorrectAnswer)
-      allOptions = [...eachAnswerSelection, eachCorrectAnswer]
-      allOptionAnswers.push(allOptions)
-
+      this.questions.push(eachQuestion)
+      this.correctAnswer.push(eachCorrectAnswer)
+      this.allOptions = [...eachAnswerSelection, eachCorrectAnswer]
+      shuffle(this.allOptions)
+      console.log(this.allOptions)
+      this.allOptionAnswers.push(this.allOptions)
+      this.userAnswerArr[i]= ""
     }
-    console.log(questions)// questions
-    console.log(questions[0]);
-    console.log(allOptionAnswers) // all possible answer selection
-    console.log(correctAnswer)// correct answers
+  //   console.log(this.questions)// questions
+    
+  //   console.log(this.allOptionAnswers) // all possible answer selection
+  //   console.log(this.correctAnswer)// correct answers
   }
 
 
@@ -50,10 +59,53 @@ export class QuizComponent implements OnInit {
       this.seconds++
     }, 1000)
   }
+ 
+  nextQuestion(){
+    if(this.questionProgress <= 9){
+//incremet
+      console.log(this.questionProgress)
+      
+      this.userAnswer = this.quizForm.controls['option'].value
+      console.log(this.userAnswer)
+      
+      this.userAnswerArr[this.questionProgress] = this.userAnswer
 
+      // this.userAnswerArr.push(this.userAnswer)
+      this.quizForm.controls['option'].reset()
+      this.userAnswer = ''
+      console.log(this.userAnswer)
+      console.log(this.userAnswerArr)
+      this.questionProgress++;
 
-  ngOnInit() { }
+    } else {
+      
+    }
+  }
+  submit() {
+    this.score = 0;
+    for (let i = 0; i< this.userAnswerArr.length; i++){
+      if(this.userAnswerArr[i] === this.correctAnswer[i])
+      this.score++
+    }
+    console.log(this.score)
 
+  }
+  previousQuestion(){
+    if(this.questionProgress > 0){
+    this.questionProgress--;
+
+  }
+
+    console.log(this.userAnswerArr)
+  }
+
+  ngOnInit() {
+    this.quizForm = this.fb.group({
+      option: new FormControl()
+    })
+    
+  }
+  
 
 
 
