@@ -1,3 +1,41 @@
 <app-navbar></app-navbar>
 
-<p>quiz component</p>
+<div class="row">
+    <form class="col s6 offset-s3">
+        <div class="card">
+            <div class="col s12">
+                <h2 *ngFor="let q of questions; index as i;" class="center-align">{{ q }}</h2>
+            </div>
+<!-- <h1>{{seconds}}</h1> -->
+            <div class="card-content">
+                <div class="row">
+                    <div class="input-field col s6">
+                        
+                        <h6 class="center-align"><span class="center-align">answer</span></h6>
+                    </div>
+                    <div class="input-field col s6">
+                        <h6 class="center-align"><span class="center-align">answer</span></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <h6 class="center-align"><span class="center-align">answer</span></h6>
+                    </div>
+                    <div class="input-field col s6">
+                        <h6 class="center-align"><span class="center-align">answer</span></h6>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 ">
+                        <button class="btn-large btn-submit" type="submit">Next</button>
+                    </div>
+                    <div class="input-field col s6 ">
+                        <button class="btn-large btn-submit" type="submit">Next</button>
+                    </div>
+                    
+                    <!-- <button class="btn-large btn-submit" type="submit">Prev</button> -->
+
+                </div>
+
+            </div>
+        </div>

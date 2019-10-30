@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class QuizService {
+    
     url;
     constructor(private http: HttpClient) {
 
