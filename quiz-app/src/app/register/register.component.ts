@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionService} from "../question.service"
+import { QuizService} from "../shared/quiz.service"
 import { NgModule } from '@angular/core';
-
+import {FormsModule } from '@angular/forms'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,24 +12,27 @@ export class RegisterComponent implements OnInit {
 emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 //get difficulty value from form
 difficulty: any //works with [(ngModel on html select tag)]
-firstName: string
-lastName: string
+category: any;
+password: any;
+name: any;
 email: string
 questions: any;
 
-  constructor(private _questionService:QuestionService) { 
+  constructor(private _quizService:QuizService) { 
     
   }
   ngOnInit() {
   }
     
     onSubmitForm() {
-      this._questionService.getQuestion(this.difficulty).subscribe((response) => {
+      this._quizService.getQuestion(this.difficulty, this.category).subscribe((response) => {
 
-        console.log(this.firstName)
-        console.log(this.lastName)
+        console.log(this.name)
         console.log(this.email)
+        console.log(this.password)
+        console.log(this.category)
         console.log(this.difficulty)
+
         console.log(response)
 
       })

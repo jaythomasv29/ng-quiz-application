@@ -10,7 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { ResultComponent } from './result/result.component';
 import { appRoutes } from './routes';
-import { QuestionService } from './question.service';
+import { QuizService } from './shared/quiz.service';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -29,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
 
   ],
-  providers: [QuestionService],
+  providers: [QuizService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
