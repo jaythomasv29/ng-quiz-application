@@ -19,9 +19,12 @@ export class RegisterService {
         element.password == password) {
         console.log(element);
         this.router.navigate(['/select'], { state: { name: element.name } });
+        
         return true;
       }
          });
          return false;
         }
+
+ 
 }

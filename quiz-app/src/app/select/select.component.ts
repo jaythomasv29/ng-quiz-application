@@ -10,12 +10,12 @@ import { FormsModule } from '@angular/forms'
   styleUrls: ['./select.component.css']
 })
 export class SelectComponent implements OnInit {
-
+  Name
   difficulty: any //works with [(ngModel on html select tag)]
   category: any;
 
   constructor(private _quizService: QuizService, private router: Router) {
-
+    this.Name = this.router.getCurrentNavigation().extras.state.name;
   }
   ngOnInit() {
   }
@@ -28,9 +28,11 @@ export class SelectComponent implements OnInit {
         {
           state:
           {
+            name: this.Name,
             category: this.category,
             difficulty: this.difficulty,
             response: response
+            
           }
         });
     })

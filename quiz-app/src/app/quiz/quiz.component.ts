@@ -1,3 +1,4 @@
+import { NavbarComponent } from './../navbar/navbar.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { FormGroup, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms'
@@ -12,7 +13,7 @@ import shuffle from 'shuffle-array'
 export class QuizComponent implements OnInit {
   //Quiz Component Properties
   quizForm: FormGroup;
-Name
+  
   seconds;
   questionProgress: number = 0; //number of questions answered
   timer;
@@ -24,13 +25,16 @@ Name
   userAnswerArr = []
   userAnswer = ""
   score
-  
-  
+  Name
+  category
+  difficulty
 
 
   constructor(private router: Router, private fb: FormBuilder) {
     let user = this.router.getCurrentNavigation().extras.state
+    this.Name = this.router.getCurrentNavigation().extras.state.name;
     // console.log('STATE Object:', user)
+    
 
     //get user questions into an array
     for (let i = 0; i < user.response.results.length; i++) {
@@ -50,10 +54,7 @@ Name
     
   //   console.log(this.allOptionAnswers) // all possible answer selection
   //   console.log(this.correctAnswer)// correct answers
-  if (this.router.getCurrentNavigation().extras.state != null){
-    this.Name = this.router.getCurrentNavigation().extras.state.name;
 
-  }
 
 
   }
@@ -96,6 +97,21 @@ Name
     console.log(this.score)
 
   }
+
+  newQuiz(){
+    this.router.navigate(['/select'],
+        {
+          state:
+          {
+            name: this.Name,
+            category: this.category,
+            difficulty: this.difficulty
+            
+          }
+        });
+        console.log(this.Name)
+  }
+
   previousQuestion(){
     if(this.questionProgress > 0){
     this.questionProgress--;
@@ -104,7 +120,7 @@ Name
 
     console.log(this.userAnswerArr)
   }
-  name = this.router.getCurrentNavigation().extras.state.name;
+
 
   ngOnInit() {
     this.quizForm = this.fb.group({

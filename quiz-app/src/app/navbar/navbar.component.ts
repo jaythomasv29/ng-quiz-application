@@ -13,12 +13,14 @@ Name
     if (this.router.getCurrentNavigation().extras.state != null){
       this.Name = this.router.getCurrentNavigation().extras.state.name;
 
+      
     }
 
 
   }
     
   ngOnInit() {
+    console.log(this.Name)
   }
   
   
