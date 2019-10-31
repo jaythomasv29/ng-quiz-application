@@ -98,6 +98,7 @@ export class QuizComponent implements OnInit {
 
     console.log(this.userAnswerArr)
   }
+  name = this.router.getCurrentNavigation().extras.state.name;
 
   ngOnInit() {
     this.quizForm = this.fb.group({

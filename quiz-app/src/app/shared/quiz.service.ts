@@ -24,7 +24,9 @@ getQuestion(difficulty, category) {
     //is called by register component and is called a method in the component: _questionService.getQuestions()
     
     // https://opentdb.com/api.php?amount=10&category=10&difficulty=easy&type=multiple
-    return this.http.get(`${this.url}amount=10&category=${category}&difficulty=${difficulty}&type=multiple`)
+    return this.http.get(`${this.url}amount=10&category=${category}&difficulty=${difficulty}&type=multiple`,
+    
+    )
 }
 
 }
