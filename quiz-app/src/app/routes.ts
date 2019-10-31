@@ -12,10 +12,11 @@ export const appRoutes: Routes = [
     { path: 'quiz', component: QuizComponent },
     { path: 'result', component: ResultComponent },
     { path: 'select', component: SelectComponent},
+    // { path: '**', component: RegisterComponent}
     
     
     
     //route for default routing
-    { path: '', redirectTo: '/register', pathMatch:'full' }
+    { path: '**', redirectTo: '/register', pathMatch:'full' }
 
 ]
