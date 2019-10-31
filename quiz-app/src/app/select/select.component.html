@@ -5,13 +5,15 @@
         <div class="col s12">
             <h2 class="center-align">Quiz Selection</h2>
         </div>
+
         <div class="card-content">
             <form #selectForm="ngForm">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">details</i>
-                        <select name="Category" [(ngModel)]="category">
+                        <select name="Category" [(ngModel)]="category" class="browser-default" required>
                             <option value="" disabled selected>Choose your option</option>
+
                             <option value="9">General Knowledge</option>
                             <option value="10">Entertainment: Books</option>
                             <option value="11">Entertainment: Film</option>
@@ -37,13 +39,12 @@
                             <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
                             <option value="32">Entertainment: Cartoon &amp; Animations</option>
                         </select>
-                        
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">details</i>
-                        <select name="Difficulty" [(ngModel)]="difficulty" required>
+                        <select name="Difficulty" [(ngModel)]="difficulty" class="browser-default"required>
                             <option value="" disabled selected>Choose your option</option>
 
                             <option value="easy">Easy</option>

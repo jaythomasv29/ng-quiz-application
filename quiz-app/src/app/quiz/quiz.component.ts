@@ -12,7 +12,7 @@ import shuffle from 'shuffle-array'
 export class QuizComponent implements OnInit {
   //Quiz Component Properties
   quizForm: FormGroup;
-
+Name
   seconds;
   questionProgress: number = 0; //number of questions answered
   timer;
@@ -50,6 +50,12 @@ export class QuizComponent implements OnInit {
     
   //   console.log(this.allOptionAnswers) // all possible answer selection
   //   console.log(this.correctAnswer)// correct answers
+  if (this.router.getCurrentNavigation().extras.state != null){
+    this.Name = this.router.getCurrentNavigation().extras.state.name;
+
+  }
+
+
   }
 
 

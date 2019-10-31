@@ -19,17 +19,11 @@ export class SelectComponent implements OnInit {
   }
   ngOnInit() {
   }
-  
+
   onSubmitForm() {
     this._quizService.getQuestion(this.difficulty, this.category).subscribe((response) => {
-      
-      // console.log(this.name)
-      // console.log(this.email)
-      // console.log(this.password)
-      // console.log(this.category)
-      // console.log(this.difficulty)
       console.log(response)
-      
+
       this.router.navigate(['/quiz'],
         {
           state:

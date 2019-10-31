@@ -1,15 +1,11 @@
 <meta charset="utf-8">
 <app-navbar></app-navbar>
 
-
-<h1 *ngIf="questionProgress >= 10">Your Score is: {{score}}</h1>
-
-
 <div class="row">
     <form class="col s6 offset-s3" [formGroup]="quizForm">
         <div class="card">
             <div class="col s12" *ngIf="questions[questionProgress]">
-                <span class="center-align">Question#: {{questionProgress+1}}</span>
+                <span class="center-align">Question# {{questionProgress+1}}</span>
                 <!-- Display the question starting at index of 0 -->
                 <h4 class="center-align">{{ questions[questionProgress] }}</h4>
 
@@ -41,11 +37,12 @@
                     <button *ngIf="questionProgress < questions.length && questionProgress > 0"(click)="previousQuestion()" class="btn-large btn-submit" type="submit">Previous</button>
             </div> -->
 
-            <div class="input-field col s12">
+            <div class="input-field col s12" *ngIf="questionProgress != 10">
                 <button *ngIf="quizForm.controls['option'].invalid || questionProgress < questions.length" (click)="nextQuestion()" class="btn-large btn-submit"
                     type="submit">Next</button>
             </div>
             <div class="row">
+                <h4 class="center-align" *ngIf="questionProgress >= 10">Your Score is: {{score}}</h4>
                     <div class="input-field col s12 ">
                             <button *ngIf="questionProgress > 9 " (click)="submit()" class="btn-large btn-submit"
                                 type="submit">Submit</button>

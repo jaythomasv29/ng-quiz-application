@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class RegisterService {
   users = [];
-  //private url = "../assests/mockData/login.json"
+  
   constructor(private router: Router) { }
 
   getCredentials(username, password): boolean {

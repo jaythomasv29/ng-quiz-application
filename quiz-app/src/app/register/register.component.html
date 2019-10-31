@@ -1,8 +1,8 @@
 <div class="row valign-wrapper">
   <div class="col s6 offset-s3">
     <div class="card hoverable">
-      <h2 class="center-align ">Quiz Login</h2>
-      <div class="col s6">
+      <div class="col s12">
+          <h2 class="center-align ">Quiz Login</h2>
       </div>
       <div class="col s6">
         <!-- <img src="src/assets/img/logo.png" style="width:250px;height:250px;" class="offset-s3"> -->
@@ -15,8 +15,9 @@
               <i class="material-icons prefix">account_circle</i>
               <input type="text" id="Name" name="Name" class="validate" ngModel required minLength="3">
               <label for="Name">Name</label>
-              <span class="helper-text" data-error="Username is invalid!" data-success="right">Must be longer than three characters</span>
-              
+              <span class="helper-text" data-error="Username is invalid!" data-success="right">Must be longer than three
+                characters</span>
+
             </div>
           </div>
           <div class="row">
@@ -24,12 +25,13 @@
               <i class="material-icons prefix">vpn_key</i>
               <input type="password" id="password" class="validate" name="password" ngModel required minLength="3">
               <label for="password">Password</label>
-              <span class="helper-text" data-error="Password is invalid!" data-success="right">Must be longer than three characters</span>
+              <span class="helper-text" data-error="Password is invalid!" data-success="right">Must be longer than three
+                characters</span>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <button class="btn-large btn-submit" type="submit" [disabled]="!registerForm.valid">Login</button>
+              <button class="btn-large btn-submit scale-out scale-transition" type="submit" [class.pulse]="registerForm.valid" [disabled]="!registerForm.valid">Login</button>
             </div>
           </div>
         </form>
