@@ -24,7 +24,7 @@ export class QuizComponent implements OnInit {
   allOptionAnswers = []
   userAnswerArr = []
   userAnswer = ""
-  score
+  score:number = 0
   Name
   category
   difficulty

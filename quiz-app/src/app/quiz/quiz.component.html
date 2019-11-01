@@ -43,7 +43,8 @@
                     (click)="nextQuestion()" class="btn-large btn-submit" type="submit">Next</button>
             </div>
             <div class="row">
-                <h4 class="center-align" *ngIf="questionProgress >= 10">Your Score is: {{score}}</h4>
+                <h4 class="center-align" *ngIf="questionProgress > 9">Correct: {{score}}</h4>
+                <h4 class="center-align" *ngIf="questionProgress > 9">Incorrect:{{10 - score}}</h4>
                 <div class="input-field col s12 ">
                     <button *ngIf="questionProgress > 9 " (click)="submit()" class="btn-large btn-submit"
                         type="submit">Submit</button>
