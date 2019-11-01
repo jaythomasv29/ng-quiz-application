@@ -28,6 +28,7 @@ export class QuizComponent implements OnInit {
   Name
   category
   difficulty
+  showResults: boolean = false;
 
 
   constructor(private router: Router, private fb: FormBuilder) {
@@ -89,12 +90,14 @@ export class QuizComponent implements OnInit {
     }
   }
   submit() {
+    
     this.score = 0;
     for (let i = 0; i< this.userAnswerArr.length; i++){
       if(this.userAnswerArr[i] === this.correctAnswer[i])
       this.score++
     }
     console.log(this.score)
+    this.showResults = true
 
   }
 
